@@ -9,6 +9,9 @@
 # This execute and test CRUD operations for the TODO resource from JSONPlaceholder server
 # Duplicate a la IntelliJ HTTP Client of: https://www.getpostman.com/collections/f126de7ff451b8056965
 #
+# Support have been asked for running this files in batch for CI/CD purposes, progress
+# on this matter can be tracked here: https://youtrack.jetbrains.com/issue/WI-42002
+#
 GET http://{{host}}:{{port}}/todos
 Accept: application/json
 
