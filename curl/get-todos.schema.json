@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "title": "TODO item",
+    "description": "A TODO item from JSONPlaceholder server",
+    "type": "object",
+    "properties": {
+      "userId": {
+        "description": "The user id of user in charge of this TODO",
+        "type": "integer"
+      },
+      "id": {
+        "description": "The unique id of this TODO",
+        "type": "integer"
+      },
+      "title": {
+        "description": "Title of this TODO",
+        "type": "string"
+      },
+      "completed": {
+        "description": "Is this TODO completed",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "id",
+      "userId"
+    ]
+  }
+}
