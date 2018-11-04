@@ -1,0 +1,47 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+#
+# This execute and test CRUD operations for the TODO resource from JSONPlaceholder server
+# Duplicate a la IntelliJ HTTP Client of: https://www.getpostman.com/collections/f126de7ff451b8056965
+#
+GET http://{{host}}:{{port}}/todos
+Accept: application/json
+
+> todos-get.js
+###
+
+POST http://{{host}}:{{port}}/todos
+Content-Type: application/json
+Accept: application/json
+
+< todos-post.json
+> todos-post.js
+###
+
+GET http://{{host}}:{{port}}/todos/{{todoId}}
+Accept: application/json
+
+> todos-get-id.js
+###
+
+PUT http://{{host}}:{{port}}/todos/{{todoId}}
+Content-Type: application/json
+Accept: application/json
+
+< todos-put.json
+> todos-put.js
+###
+
+DELETE http://{{host}}:{{port}}/todos/{{todoId}}
+###
+
+DELETE http://{{host}}:{{port}}/todos/{{todoId}}
+
+> todos-delete-404.js
+
+###
