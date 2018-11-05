@@ -7,9 +7,9 @@
 # make available environment variables
 export $(grep -v '^#' $1 | xargs)
 # dump files
-[ -d ${DUMP_DIR} ] || mkdir -p ${DUMP_DIR}
-[ -f ${DUMP_DIR}/.get-todos.body ] || (touch ${DUMP_DIR}/.get-todos.body && chmod 775 ${DUMP_DIR}/.get-todos.body)
-[ -f ${DUMP_DIR}/.get-todos.headers ] || (touch ${DUMP_DIR}/.get-todos.headers && chmod 775 ${DUMP_DIR}/.get-todos.headers)
+[[ -d ${DUMP_DIR} ]] || mkdir -p ${DUMP_DIR}
+[[ -f ${DUMP_DIR}/.get-todos.body ]] || (touch ${DUMP_DIR}/.get-todos.body && chmod 775 ${DUMP_DIR}/.get-todos.body)
+[[ -f ${DUMP_DIR}/.get-todos.headers ]] || (touch ${DUMP_DIR}/.get-todos.headers && chmod 775 ${DUMP_DIR}/.get-todos.headers)
 
 # make request saving response headers and body
 curl -sD ${DUMP_DIR}/.get-todos.headers  -o ${DUMP_DIR}/.get-todos.body \
@@ -25,7 +25,7 @@ ajv validate -s get-todos.schema.json -d ${DUMP_DIR}/.get-todos.body >/dev/null
 
 # test response status
 read PROTO STATUS MSG <<< $(head -n 1 ${DUMP_DIR}/.get-todos.headers)
-[ $STATUS == 200 ] || (echo "Response status code is not 200" && exit 1)
+[[ ${STATUS} == 200 ]] || (echo "Response status code is not 200" && exit 1)
 
 # test header value
 
@@ -35,4 +35,4 @@ shopt -s extglob # Required to trim whitespace; see below
 IFS=':' read KEY VALUE <<< $(cat ${DUMP_DIR}/.get-todos.headers | grep -Fe "Content-Type:")
 # trim whitespace in "VALUE"
 VALUE=${VALUE##+([[:space:]])}; VALUE=${VALUE%%+([[:space:]])}
-[ "$VALUE" == "application/json; charset=utf-8" ] || (echo "Wrong Content-Type" && exit 1)
+[[ "$VALUE" == "application/json; charset=utf-8" ]] || (echo "Wrong Content-Type" && exit 1)
