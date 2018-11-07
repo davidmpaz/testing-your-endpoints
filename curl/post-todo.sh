@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # make available environment variables
 export $(grep -v '^#' $1 | xargs)

@@ -1,0 +1,26 @@
+stages:
+  - test
+
+Run cURL:
+  stage: test
+  image: node:8.12-alpine
+  before_script:
+    - npm i -g json-server ajv
+    - json-server ./db.json &
+  script:
+    - cd curl && ./get-todos.sh .env
+    - cd curl && ./post-todos.sh .env
+
+Run Postman:
+  stage: test
+  image: node:8.12-alpine
+  variables:
+    POSTMAN_API_KEY: $POSTMAN_API_KEY_GITLAB
+    POSTMAN_API_URL: "https://api.getpostman.com"
+    POSTMAN_ENV_UUID: "148558-80cdf3c9-7ead-4e7a-bc8e-37acd328b484"
+    POSTMAN_COLLECTION_UUID: "148558-169a2b6c-057b-40f0-a118-70012d38f3f2"
+  before_script:
+    - npm i -g json-server ajv newman
+    - json-server ./db.json &
+  script:
+    - ./postman/run.sh
