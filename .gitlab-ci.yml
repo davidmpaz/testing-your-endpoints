@@ -26,3 +26,20 @@ Run Postman:
     - json-server ./db.json &
   script:
     - ./postman/run.sh
+
+Run SoapUI:
+  stage: test
+  image: docker:stable
+  services:
+    - docker:stable-dind
+  variables:
+    SOAPUI_VERSION: '5.4.0'
+    JSON_HOST_NAME: json-server
+    SOAPUI_HOST_NAME: ddavison-soapui
+  before_script:
+    - apk update && apk add curl bash
+  script:
+    - docker network create --internal test
+    - docker run --rm -d -p 80:80 --net test -h $JSON_HOST_NAME --name=$JSON_HOST_NAME -v $CI_PROJECT_DIR/db.json:/data/db.json clue/json-server
+    - docker run --rm -d -p 3000:3000 --net test -h $SOAPUI_HOST_NAME --name=$SOAPUI_HOST_NAME -v $CI_PROJECT_DIR/soapui:/opt/project ddavison/soapui
+    - docker exec $SOAPUI_HOST_NAME bash /opt/SoapUI/bin/testrunner.sh -ProotURL=http://$JSON_HOST_NAME /opt/project/JSONPlaceholder-soapui-project.xml
