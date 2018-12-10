@@ -192,11 +192,6 @@
             <con:endpoint>${#Project#rootURL}</con:endpoint>
             <con:request/>
             <con:originalUri>http://localhost/todos</con:originalUri>
-            <con:assertion type="Response SLA Assertion" id="b8447546-61a3-4f8b-a369-5a18bc091bb6" name="Response SLA">
-              <con:configuration>
-                <SLA>200</SLA>
-              </con:configuration>
-            </con:assertion>
             <con:assertion type="Valid HTTP Status Codes" id="de90b623-b7a1-4232-b2a7-89f4cbdda837" name="Valid HTTP Status Codes">
               <con:settings/>
               <con:configuration>
@@ -241,11 +236,6 @@
               <con:settings/>
               <con:configuration>
                 <codes>201</codes>
-              </con:configuration>
-            </con:assertion>
-            <con:assertion type="Response SLA Assertion" id="aa5e7dd7-53a1-401b-9171-a82b2d0a829d" name="Response SLA">
-              <con:configuration>
-                <SLA>200</SLA>
               </con:configuration>
             </con:assertion>
             <con:assertion type="JsonPath Match" id="110ea370-af50-4c69-804a-f5763e972b6d" name="JsonPath Match">
@@ -313,11 +303,6 @@
                 <codes>200</codes>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="Response SLA Assertion" id="a9681918-41af-408c-afe9-a3017cc9c947" name="Response SLA">
-              <con:configuration>
-                <SLA>200</SLA>
-              </con:configuration>
-            </con:assertion>
             <con:assertion type="JsonPath Match" id="bb01f6d8-4531-452c-b5f0-a51effc59c5a" name="JsonPath Match">
               <con:configuration>
                 <path>$.completed</path>
@@ -354,11 +339,6 @@
                 <codes>200</codes>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="Response SLA Assertion" id="bec5d2d7-fcea-4809-a1bb-dca218d68e96" name="Response SLA">
-              <con:configuration>
-                <SLA>200</SLA>
-              </con:configuration>
-            </con:assertion>
             <con:assertion type="Simple NotContains" id="efe0fbda-ec05-48af-a15a-ab77b75bbdaf" name="Not Contains">
               <con:configuration>
                 <token/>
@@ -387,11 +367,6 @@
             <con:endpoint>${#Project#rootURL}</con:endpoint>
             <con:request/>
             <con:originalUri>http://localhost/todos</con:originalUri>
-            <con:assertion type="Response SLA Assertion" id="7d464e31-d366-42da-af26-95a8dfe5e262" name="Response SLA">
-              <con:configuration>
-                <SLA>200</SLA>
-              </con:configuration>
-            </con:assertion>
             <con:assertion type="Valid HTTP Status Codes" id="38bb7fef-0a77-4ba0-9a70-148f0398efeb" name="Valid HTTP Status Codes">
               <con:settings/>
               <con:configuration>
